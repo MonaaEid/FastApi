@@ -10,7 +10,7 @@ app = FastAPI()
 @app.get("/")
 def Download():
   youtubeObject = YouTube("https://youtu.be/p-h1LpM1xm4?si=kSaZGqAGLi-tJmfz")
-  youtubeObject = youtubeObject.streams.get_highest_resolution()
+  youtubeObject = youtubeObject.streams.get_audio_only()
   try:
     youtubeObject.download()
   except:
@@ -28,16 +28,6 @@ def Download():
 # @app.get("/pydantic", response_class=RedirectResponse, status_code=302)
 # async def redirect_pydantic():
 #   return "https://docs.pydantic.dev/"
-
-# @app.get("/")
-# def read_root():
-#   return {"Hello": "World"}
-
-# @app.get("/items")
-# def get_full_name(first_name, last_name):
-#   full_name = first_name.title() + " " + last_name.title()
-#   # return full_name'
-#   return te
 
 
 @app.get("/items/{item_id}")
